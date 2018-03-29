@@ -1,5 +1,5 @@
 ## 前言
-```Session```和```Cookie```作为web开发中两个重要的"工具"，对其进行一次全面的了解是非常有必要的。（以下所说的内容都是基于web开发条件下的，Cookie本身是一个概念，Web Cookie只是其中的一种实现）
+```Session```和```Cookie```作为web开发中两个重要的"工具"，对其进行一次全面的了解是非常有必要的。（以下所说的内容都是基于web开发条件下的，Cookie本身是一个概念，Web Cookie只是其中的一种实现）
 
 ## why Cookie, why Session
 
@@ -13,7 +13,7 @@
 
 - why Session
 
-  那么为什么还有Session呢？Session其实是Cookie的一种具体实现。每次客户登录网站的时候，后台生成一个Session并设置一个过期时间，并用一个hash存储，在响应的HTTP请求里设置一个```会话阶段的Cookie```。下次后台如果接收的HTTP请求里的Cookie在hash里有对应，那么我们就认为这是一个已经登录的用户，直接为他提供服务。
+  那么为什么还有Session呢？Session其实是Cookie的一种具体实现。每次客户登录网站的时候，后台生成一个Session并设置一个过期时间，并用一个hash存储，在响应的HTTP请求里设置一个```会话阶段的Cookie```。下次后台如果接收的HTTP请求里的Cookie在hash里有对应，那么我们就认为这是一个已经登录的用户，直接为他提供服务。
 
   - why 会话阶段Cookie
 
