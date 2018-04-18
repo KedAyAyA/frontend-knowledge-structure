@@ -58,7 +58,7 @@
 
   - 2.2.4 ```onFulfilled```或```onRejected```直到执行上下文栈内仅包含平台代码时必须执行 [3.1]
 
-  - 2.2.5 ```onFulfilled```或```onRejected```必须作为函数被调用[3.2]
+  - 2.2.5 ```onFulfilled```或```onRejected```必须作为函数被调用（不含有this）[3.2]
 
   - 2.2.6 ```then```可能在同一个promise里被调用多次
 
@@ -76,7 +76,7 @@
 
     - 2.2.7.3 如果```onFulfilled```不是一个函数并且```promise1```处于fulfilled状态，```promise2```必须处于fulfilled状态并且与promise1具有相同的value
 
-    - 2.2.7.4  如果```onRejected```不是一个函数并且```promise1```处于fulfilled状态，```promise2```必须处于rejected状态并且与promise1具有相同的reason
+    - 2.2.7.4  如果```onRejected```不是一个函数并且```promise1```处于rejected状态，```promise2```必须处于rejected状态并且与promise1具有相同的reason
 
   ### 2.3 Promise解决程序
   promise解决程序是一个以```promise```和```value```作为输入的抽象操作，我们表示为```[[Resolve]](promise, x)```。如果x是```thenable```，该方法尝试使```promise```采取```x```的状态，在```x```表现得至少有点像一个promise的假设下。否则，使```promise```变为值为x的fulfilled状态
