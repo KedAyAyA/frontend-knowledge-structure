@@ -332,6 +332,37 @@
         }, Promise.resolve(''))
     ```
 
+  - catch
+
+    明明在我们日常工作中常用到的catch方法，为什么到现在还一点都没有提到呢？
+    因为catch方法就是then方法封装出来的语法糖而已啊，因为如果只想捕获错误，还每次都要书写then的第一个参数，真的是麻烦至极，现在我们来写一个自己的catch
+
+    ```javascript
+    Promise.prototype.mycatch = function (cb) {
+        return this.then(1, function onRejected (reason) {
+          return cb(reason)
+        })
+      }
+    // 用到了规范中如果onFulfilled不是一个函数，则忽略，并使用原先promise状态与value
+    ```
+
+  - finally
+
+    有的浏览器实现了finally,而有的并没有,从需求上来讲finally只不过是最终要执行一个函数，我们需要把应该有的状态或者异常都继续传递，不受其影响。执行的函数与promise的value无任何关系
+
+    ```javascript
+    Promise.prototype.myfinally = function (cb) {
+      return this.then(function onFulfilled (value) {
+        return Promise.resolve(cb()).then(() => value)
+      }, function onRejected (reason) {
+        return Promise.resolve(cb()).then(() => {
+          throw reason
+        })
+      })
+    }
+    ```
+    
+
 ##  后记
   
   通过阅读规范并写demo进行验证测试，对Promise的理解更加深入了，也能更好的使用它了
